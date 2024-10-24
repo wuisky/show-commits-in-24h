@@ -1,0 +1,17 @@
+name: 'Show commits in back 24h'
+description: 'Show commits in back 24h recursively.'
+author: 'wuisky <wuisky@umail.com>'
+inputs:
+  path:
+    description: 'directory to start recursive find git repositories'
+    required: false
+    default: '${{ github.workspace }}'
+runs:
+  using: 'composite'
+  steps:
+    - run: $GITHUB_ACTION_PATH/commits_in_24h.sh ${{ inputs.path }}
+      shell: sh
+
+branding:
+  icon: 'check'
+  color: 'green'
